@@ -6,6 +6,9 @@ pipeline {
                 echo 'Repository cloned successfully'
                 sh 'pwd'
                 sh 'ls -la'
+                sh 'hostname'
+                sh 'whoami'
+                sh 'pwd'
             }
         }
         stage('Build') {

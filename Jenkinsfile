@@ -1,5 +1,8 @@
 pipeline {
-    agent 'ec2-agent'
+    agent {
+        label 'ec2-agent'
+    }
+
     stages {
         stage('Checkout Verification') {
             steps {
@@ -11,12 +14,14 @@ pipeline {
                 sh 'pwd'
             }
         }
+
         stage('Build') {
             steps {
                 echo 'Build Stage'
                 sh 'python3 --version || true'
             }
         }
+
         stage('Test') {
             steps {
                 sh 'python3 test_app.py'
@@ -24,6 +29,7 @@ pipeline {
             }
         }
     }
+
     post {
         always {
             echo 'Pipeline Finished'
